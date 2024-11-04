@@ -28,14 +28,23 @@ export class AppComponent implements OnInit{
   currentCheckInVal!:string;
   currentCheckOutVal!:string;
 
+  // Add welcome messages
+  welcomeMessageUS: string = '';
+  welcomeMessageFR: string = '';
+  //welcomeMessageUS: Observable<string>;
+  //welcomeMessageFR: Observable<string>;
+
+
     ngOnInit(){
       this.roomsearch= new FormGroup({
         checkin: new FormControl(' '),
         checkout: new FormControl(' ')
+
+        // Get welcome messages
       });
 
- //     this.rooms=ROOMS;
-
+      this.getWelcomeUS();
+      this.getWelcomeFR();
 
     const roomsearchValueChanges$ = this.roomsearch.valueChanges;
 
@@ -83,7 +92,28 @@ export class AppComponent implements OnInit{
        return this.httpClient.get(this.baseURL + '/room/reservation/v1?checkin='+ this.currentCheckInVal + '&checkout='+this.currentCheckOutVal, {responseType: 'json'});
     }
 
+  // Get message functions
+  getWelcomeUS() {
+    this.httpClient.get<string>(this.baseURL + '/api/welcome-messageUS').subscribe(
+      (message: string) => {
+        this.welcomeMessageFR = message;
+      },
+      (error) => {
+        console.error(error);
+      }
+    )
   }
+  getWelcomeFR() {
+    this.httpClient.get<string>(this.baseURL + '/api/welcome-messageFR').subscribe(
+      (message: string) => {
+        this.welcomeMessageFR = message;
+      },
+      (error) => {
+        console.error(error);
+      }
+    )
+  }
+}
 
 
 
