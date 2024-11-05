@@ -5,8 +5,7 @@
     <div class="hgroup">
       <h1>Landon Hotel</h1>
       <h2>London, Ontario</h2>
-      <h1>{{ welcomeMessageUS }}</h1>
-      <h2>{{ welcomeMessageFR }}</h2>
+
       <p><a href="/#welcome"><img src="assets/images/arrow.png" alt="down arrow"></a></p>
     </div>
   </article>
@@ -17,6 +16,10 @@
     <nav id="nav" style="position: relative; top: 0; left: 0; bottom: auto; right: auto; width: 100%;">
       <div class="navbar">
         <div class="brand"><a href="/#welcome">Landon <span>Hotel</span></a></div>
+        <div style="clear: both">
+          <!-- No idea how HTML works to get both to display -->
+          <h1>{{welcomeMessageUS}} {{welcomeMessageFR}}</h1>
+        </div>
       </div><!-- navbar -->
     </nav>
   </div>
@@ -25,7 +28,10 @@
   <div class="scene" id="welcome">
     <article class="content">
 
-
+      <!--<p>
+        {{welcomeMessageUS}}
+        {{welcomeMessageFR}}
+      </p>-->
 
       <div class="row">
         <div class=""col-12>

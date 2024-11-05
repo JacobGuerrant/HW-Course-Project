@@ -31,8 +31,8 @@ export class AppComponent implements OnInit{
   // Add welcome messages
   welcomeMessageUS: string = '';
   welcomeMessageFR: string = '';
-  //welcomeMessageUS: Observable<string>;
-  //welcomeMessageFR: Observable<string>;
+  //welcomeMessageUS!: Observable<string>;
+  //welcomeMessageFR!: Observable<string>;
 
 
     ngOnInit(){
@@ -43,6 +43,8 @@ export class AppComponent implements OnInit{
         // Get welcome messages
       });
 
+      //this.welcomeMessageUS = this.httpClient.get(this.baseURL + '/api/welcome-messageUS', {responseType: 'text'})
+      //this.welcomeMessageFR = this.httpClient.get(this.baseURL + '/api/welcome-messageFR', {responseType: 'text'})
       this.getWelcomeUS();
       this.getWelcomeFR();
 
@@ -97,21 +99,13 @@ export class AppComponent implements OnInit{
     this.httpClient.get<string>(this.baseURL + '/api/welcome-messageUS').subscribe(
       (message: string) => {
         this.welcomeMessageFR = message;
-      },
-      (error) => {
-        console.error(error);
-      }
-    )
+        })
   }
   getWelcomeFR() {
     this.httpClient.get<string>(this.baseURL + '/api/welcome-messageFR').subscribe(
       (message: string) => {
         this.welcomeMessageFR = message;
-      },
-      (error) => {
-        console.error(error);
-      }
-    )
+      })
   }
 }
 

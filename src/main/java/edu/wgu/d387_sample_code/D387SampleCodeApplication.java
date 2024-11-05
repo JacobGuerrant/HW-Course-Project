@@ -5,6 +5,13 @@ import java.util.Locale;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/*
+START:
+cd \IdeaProjects\d387-advanced-java\src\main\UI
+ng build | ng serve
+mvn spring-boot:run
+*/
+
 @SpringBootApplication
 public class D387SampleCodeApplication {
 
