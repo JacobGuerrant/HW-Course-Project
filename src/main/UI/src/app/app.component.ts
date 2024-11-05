@@ -31,6 +31,7 @@ export class AppComponent implements OnInit{
   // Add welcome messages
   welcomeMessageUS: string = '';
   welcomeMessageFR: string = '';
+  presentationTime: string = '';
   //welcomeMessageUS!: Observable<string>;
   //welcomeMessageFR!: Observable<string>;
 
@@ -47,6 +48,7 @@ export class AppComponent implements OnInit{
       //this.welcomeMessageFR = this.httpClient.get(this.baseURL + '/api/welcome-messageFR', {responseType: 'text'})
       this.getWelcomeUS();
       this.getWelcomeFR();
+      this.getTime();
 
     const roomsearchValueChanges$ = this.roomsearch.valueChanges;
 
@@ -108,6 +110,14 @@ export class AppComponent implements OnInit{
       (message: string) => {
         this.welcomeMessageFR = message;
       })
+  }
+
+  getTime() {
+    this.httpClient.get(this.baseURL + '/api/Timezone', {responseType: 'text'}).subscribe(
+      (message: string) => {
+        this.presentationTime = message;
+      }
+    )
   }
 }
 
